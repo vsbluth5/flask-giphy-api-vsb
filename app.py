@@ -9,6 +9,7 @@ import os
 app = Flask(__name__)
 
 app.config['GIPHY_KEY'] = os.getenv("GIPHY_KEY")
+KEY = app.config['GIPHY_KEY'] 
 
 # -- Routes section --
 @app.route('/')
@@ -20,5 +21,5 @@ def index():
 def getgif():
     user_input = request.form['gifchoice']
     print(user_input)
-    source = getImageUrlFrom(user_input, app.config['GIPHY_KEY'])
+    source = getImageUrlFrom(user_input, KEY)
     return render_template('yourgif.html', pic = source)
